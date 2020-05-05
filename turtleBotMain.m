@@ -6,10 +6,10 @@ set(0,'DefaultFigureWindowStyle','docked')
 clc
 clf
 clear
-rosshutdown
-rosinit('192.168.1.100')
+rosshutdown;
+rosinit;
 rostopic list;
 system('roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch');
 rostopic list;
-% input('Press enter to terminate ros: ')
-% rosshutdown;
+input('Press enter to terminate ros: ')
+rosshutdown;
