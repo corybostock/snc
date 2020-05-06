@@ -6,10 +6,11 @@ set(0,'DefaultFigureWindowStyle','docked')
 clc
 clf
 clear
+
 rosshutdown;
 rosinit;
 rostopic list;
-system('roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch');
+disp('Run roslaunch in the terminal then press enter to continue: ');
+% roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 rostopic list;
-input('Press enter to terminate ros: ')
 rosshutdown;
