@@ -10,7 +10,6 @@ clear
 rosshutdown;
 rosinit;
 rostopic list;
-disp('Run roslaunch in the terminal then press enter to continue: ');
-% roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+disp('Run roslaunch in the terminal then press enter to continue: ')
 rostopic list;
 rosshutdown;
