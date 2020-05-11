@@ -7,25 +7,19 @@ clf
 clear
 
 % Init ROS
-% rosshutdown;
-% rosinit;                                                                        % makes a ROS node and allows comms to ROS
-% rostopic list;
-% disp('Run roslaunch files in order, then continue the Matlab script: ')
-% disp('roslaunch turtlebot3_gazebo multi_turtlebot3.launch ');
-% dbstop at 16 in turtleBotMain;
-% rostopic list;
+rosshutdown;
+rosinit;                                                                        % makes a ROS node and allows comms to ROS
+rostopic list;
+disp('Run roslaunch files in order, then continue the Matlab script: ')
+disp('roslaunch turtlebot3_gazebo multi_turtlebot3.launch ');
+dbstop at 16 in turtleBotMain;
+rostopic list;
 
-% Subscribing and Publishing ROS Topics
-guiderOdom = rossubscriber('/guider/odom');
-guiderScan = rossubscriber('/guider/scan');
-followerOdom = rossubscriber('/follower/odom');
-followerScan = rossubscriber('/follower/scan');
-guiderControl = rospublisher('/guider/cmd_vel', 'geometry_msgs/Twist');
+% Making robot instances, subscribing and publishing ROS topics
+guider      = robot('/guider/odom', '/guider/scan', '/guider/cmd_vel');
+follower    = robot('/follower/odom', '/follower/scan', '/follower/cmd_vel');
+motion      = move();
 
-controlOutput = rosmessage('geometry_msgs/Twist');
-controlOutput.Linear.X = 0.5;
+motion.testMove(guider);
 
-send(guiderControl, controlOutput);
-
-
-% rosshutdown;
+rosshutdown;
