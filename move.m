@@ -8,9 +8,9 @@ classdef move < handle
             obj.controlOutput = rosmessage('geometry_msgs/Twist');
         end
         
-        function circle(obj, robot)
-            obj.controlOutput.Linear.X = 0.5;
-            obj.controlOutput.Angular.Z = 0.2;
+        function circle(obj, robot, linear, angular)
+            obj.controlOutput.Linear.X = linear;
+            obj.controlOutput.Angular.Z = angular;
             send(robot.cmd_vel, obj.controlOutput);
             pause(1.5);
         end
