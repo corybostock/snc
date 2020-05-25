@@ -1,0 +1,13 @@
+killall -9 gzserver gzclient
+
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash 
+source ~/.bashrc 
+
+roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch 
+roslaunch turtlebot3_gazebo turtlebot3_world.launch 
+roslaunch turtlebot3_gazebo turtlebot3_house.launch 
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch 
+
+rosmsg
