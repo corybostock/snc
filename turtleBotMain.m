@@ -13,39 +13,41 @@ disp('roslaunch turtlebot3_gazebo multi_turtlebot3.launch ');
 input('Press enter to continue after running Gazebo: ');
 
 % Making robot instances, subscribing and publishing ROS topics
-guider      = robot('/guider/odom', '/guider/scan', '/guider/cmd_vel');
-follower    = robot('/follower/odom', '/follower/scan', '/follower/cmd_vel');
+guider      = robot('/guider/odom', '/guider/scan', '/guider/cmd_vel', '/guider/mybot/camera1/image_raw');
+follower    = robot('/follower/odom', '/follower/scan', '/follower/cmd_vel', '/follower/mybot/camera1/image_raw');
 motion      = move();
 
+ guider.updateImage();
+
 % Turtlebot control
-disp('Moving guider: ');
-motion.circle(guider, 1.0, 0.5);
-input('Press enter to move to next stage: ');
-motion.stop(guider);
-motion.stop(follower);
-pause(0.7);
-
-disp('Moving guider: ');
-motion.circle(guider, 1.5, -1.0);
-input('Press enter to move to next stage: ');
-motion.stop(guider);
-motion.stop(follower);
-pause(0.7);
-
-disp('Moving guider: ');
-motion.circle(guider, 1.5, 1.0);
-input('Press enter to move to next stage: ');
-motion.stop(guider);
-motion.stop(follower);
-pause(0.7);
-
-disp('Moving guider: ');
-motion.circle(guider, -1.0, -0.5);
-input('Press enter to move to next stage: ');
-motion.stop(guider);
-motion.stop(follower);
-pause(0.7);
-
-disp('End of demonstration')
-
-rosshutdown;
+% disp('Moving guider: ');
+% motion.circle(guider, 1.0, 0.5);
+% input('Press enter to move to next stage: ');
+% motion.stop(guider);
+% motion.stop(follower);
+% pause(0.7);
+% 
+% disp('Moving guider: ');
+% motion.circle(guider, 1.5, -1.0);
+% input('Press enter to move to next stage: ');
+% motion.stop(guider);
+% motion.stop(follower);
+% pause(0.7);
+% 
+% disp('Moving guider: ');
+% motion.circle(guider, 1.5, 1.0);
+% input('Press enter to move to next stage: ');
+% motion.stop(guider);
+% motion.stop(follower);
+% pause(0.7);
+% 
+% disp('Moving guider: ');
+% motion.circle(guider, -1.0, -0.5);
+% input('Press enter to move to next stage: ');
+% motion.stop(guider);
+% motion.stop(follower);
+% pause(0.7);
+% 
+% disp('End of demonstration')
+% 
+% rosshutdown;
