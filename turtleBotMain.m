@@ -5,9 +5,9 @@ clc
 clear
 
 % Init ROS
-rosshutdown;
-rosinit;                                                                     % makes a ROS node and allows comms to ROS
-rostopic list;
+% rosshutdown;
+% rosinit;                                                                     % makes a ROS node and allows comms to ROS
+% rostopic list;
 disp('Run roslaunch files in order, then continue the Matlab script: ')
 disp('roslaunch turtlebot3_gazebo multi_turtlebot3.launch ');
 input('Press enter to continue after running Gazebo: ');
@@ -17,14 +17,14 @@ guider      = robot('/guider/odom', '/guider/scan', '/guider/cmd_vel', '/guider/
 follower    = robot('/follower/odom', '/follower/scan', '/follower/cmd_vel', '/follower/mybot/camera1/image_raw');
 motion      = move();
 
- guider.updateImage();
+%  guider.updateImage();
 
 % Turtlebot control
-% disp('Moving guider: ');
-% motion.circle(guider, 1.0, 0.5);
-% input('Press enter to move to next stage: ');
-% motion.stop(guider);
-% motion.stop(follower);
+disp('Moving guider: ');
+motion.circle(guider, 1.0, 0.5);
+input('Press enter to move to next stage: ');
+motion.stop(guider);
+motion.stop(follower);
 % pause(0.7);
 % 
 % disp('Moving guider: ');
