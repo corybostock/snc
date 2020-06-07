@@ -10,8 +10,7 @@ clear
 % Init ROS
 rosshutdown;
 rosinit;                                                                     % makes a ROS node and allows comms to ROS
-rostopic list;
-disp('Run roslaunch files in order, then continue the Matlab script: ')
+disp('Run roslaunch file, then continue the Matlab script: ')
 disp('roslaunch turtlebot3_gazebo multi_turtlebot3.launch ');
 input('Press enter to continue after running Gazebo: ');
 
